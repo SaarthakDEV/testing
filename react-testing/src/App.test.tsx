@@ -14,7 +14,7 @@ describe("Component", () => {
   });
 });
 
-test("Greet renders with a name", () => {
+test.only("Greet render with a name", () => {
     render(<App name={name} />)
     const ele = screen.getByText(`Hello ${name}`)
     expect(ele).toBeInTheDocument();
