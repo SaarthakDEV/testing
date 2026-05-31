@@ -1,0 +1,35 @@
+import { useState, useEffect } from 'react'
+import type { SkillsProps } from './Skills.types'
+
+export const Skills = (props: SkillsProps) => {
+  const { skills } = props
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedInT, setIsLoggedInT] = useState(false)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoggedIn(true)
+    }, 1001)
+  }, [])
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoggedInT(true)
+    }, 2001)
+  }, [])
+  return (
+    <>
+      <ul>
+        {skills.map((skill) => {
+          return <li key={skill}>{skill}</li>
+        })}
+      </ul>
+      {isLoggedIn ? (
+        <button>Start learning</button>
+      ) : (
+        <button onClick={() => setIsLoggedIn(true)}>Login</button>
+      )}
+      { isLoggedInT && <button>Start learning</button>}
+    </>
+  )
+}

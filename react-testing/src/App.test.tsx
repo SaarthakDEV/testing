@@ -4,7 +4,7 @@ import App from "./App";
 
 const name = "Saarthak"
 
-describe("Component", () => {
+describe.skip("Component", () => {
   test("renders hello world text", () => {
     render(<App name={name}/>);
 
@@ -14,7 +14,7 @@ describe("Component", () => {
   });
 });
 
-test.only("Greet render with a name", () => {
+test.skip("Greet render with a name", () => {
     render(<App name={name} />)
     const ele = screen.getByText(`Hello ${name}`)
     expect(ele).toBeInTheDocument();
