@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { logRoles, render, screen, waitFor } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 import { Skills } from "./Skills";
 
@@ -35,13 +35,15 @@ describe.skip("queryBy", () => {
 describe("findBy",() => {
         const skills = ["HTML", "CSS", "JavaScript"]
     test("Start learning button is eventually displayed", async () => {
-        render(<Skills skills={skills} />)
+        const view = render(<Skills skills={skills} />)
+        logRoles(view.container)
+        screen.debug()
         const startLearningButton = await screen.findByRole("button", {
             name: "Start learning"
         }, {
             timeout: 2000
         })
-
+        screen.debug()
         expect(startLearningButton).toBeInTheDocument();
 
         await waitFor(() => {
